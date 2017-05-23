@@ -6,11 +6,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import sample.components.MenuBox;
 import sample.components.MenuButtonItem;
 import sample.components.SubMenu;
-
 
 public class Main extends Application {
 
@@ -30,12 +31,14 @@ public class Main extends Application {
 
         TextField loginText = new TextField();
         loginText.setPrefHeight(50);
+        loginText.setFont(Font.font("Arial", FontWeight.BOLD,16));
         MenuButtonItem enter = new MenuButtonItem("Вход");
         MenuButtonItem back1 = new MenuButtonItem("Назад");
         SubMenu menuLogin = new SubMenu(loginText, enter, back1);
 
         TextField registrationText = new TextField();
         registrationText.setPrefHeight(50);
+        registrationText.setFont(Font.font("Arial", FontWeight.BOLD,16));
         MenuButtonItem registrationButton = new MenuButtonItem("Зарегистрироваться");
         MenuButtonItem back2 = new MenuButtonItem("Назад");
         SubMenu menuRegistration = new SubMenu(registrationText, registrationButton, back2);
