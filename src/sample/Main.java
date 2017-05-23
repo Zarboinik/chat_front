@@ -2,13 +2,15 @@ package sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import sample.components.MenuBox;
 import sample.components.MenuButtonItem;
-import sample.components.SubMainMenu;
+import sample.components.SubMenu;
+
 
 public class Main extends Application {
 
@@ -24,19 +26,22 @@ public class Main extends Application {
         MenuButtonItem login = new MenuButtonItem("Авторизация");
         MenuButtonItem registration = new MenuButtonItem("Регистрация");
         MenuButtonItem exit = new MenuButtonItem("Выход");
-        SubMainMenu mainMenu = new SubMainMenu(login,registration,exit);
+        SubMenu mainMenu = new SubMenu(login,registration,exit);
 
-        MenuButtonItem loginHere = new MenuButtonItem("Здесь будет ввод текста");
+        TextField loginText = new TextField();
+        loginText.setPrefHeight(50);
         MenuButtonItem enter = new MenuButtonItem("Вход");
         MenuButtonItem back1 = new MenuButtonItem("Назад");
-        SubMainMenu menuLogin = new SubMainMenu(loginHere, enter, back1);
+        SubMenu menuLogin = new SubMenu(loginText, enter, back1);
 
-        MenuButtonItem registrHere = new MenuButtonItem("текст для регистрации");
+        TextField registrationText = new TextField();
+        registrationText.setPrefHeight(50);
         MenuButtonItem registrationButton = new MenuButtonItem("Зарегистрироваться");
         MenuButtonItem back2 = new MenuButtonItem("Назад");
-        SubMainMenu menuRegistration = new SubMainMenu(registrHere, registrationButton, back2);
+        SubMenu menuRegistration = new SubMenu(registrationText, registrationButton, back2);
 
         MenuBox menuBox = new MenuBox(mainMenu);
+
         login.setOnMouseClicked(event -> menuBox.setSubMenu(menuLogin));
         back1.setOnMouseClicked(event -> menuBox.setSubMenu(mainMenu));
         back2.setOnMouseClicked(event -> menuBox.setSubMenu(mainMenu));
