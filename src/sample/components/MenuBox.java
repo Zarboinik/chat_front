@@ -1,13 +1,9 @@
-package sample.component;
+package sample.components;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.*;
 import javafx.scene.shape.Rectangle;
 
-
-/**
- * Created by Zarboinik on 23.05.2017.
- */
 public class MenuBox extends Pane {
     static SubMainMenu subMainMenu;
 

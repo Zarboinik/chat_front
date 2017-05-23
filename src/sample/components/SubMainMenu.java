@@ -1,18 +1,14 @@
-package sample.component;
+package sample.components;
 
 import javafx.scene.layout.VBox;
-import sample.component.MenuItem;
 
-/**
- * Created by Zarboinik on 23.05.2017.
- */
 public class SubMainMenu extends VBox {
 
-    public SubMainMenu(MenuItem...items){
+    public SubMainMenu(MenuButtonItem...items){
         setSpacing(15);
         setTranslateY(250);
         setTranslateX(350);
-        for (MenuItem item: items){
+        for (MenuButtonItem item: items){
             getChildren().addAll(item);
         }
     }

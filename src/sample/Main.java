@@ -6,9 +6,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import sample.component.MenuBox;
-import sample.component.MenuItem;
-import sample.component.SubMainMenu;
+import sample.components.MenuBox;
+import sample.components.MenuButtonItem;
+import sample.components.SubMainMenu;
 
 public class Main extends Application {
 
@@ -21,16 +21,29 @@ public class Main extends Application {
         img.setFitWidth(900);
         root.getChildren().add(img);
 
-        MenuItem login = new MenuItem("Авторизация");
-        MenuItem registration = new MenuItem("Регистрация");
-        MenuItem exit = new MenuItem("Выход");
+        MenuButtonItem login = new MenuButtonItem("Авторизация");
+        MenuButtonItem registration = new MenuButtonItem("Регистрация");
+        MenuButtonItem exit = new MenuButtonItem("Выход");
         SubMainMenu mainMenu = new SubMainMenu(login,registration,exit);
-        MenuBox menuBox = new MenuBox(mainMenu);
 
+        MenuButtonItem loginHere = new MenuButtonItem("Здесь будет ввод текста");
+        MenuButtonItem enter = new MenuButtonItem("Вход");
+        MenuButtonItem back1 = new MenuButtonItem("Назад");
+        SubMainMenu menuLogin = new SubMainMenu(loginHere, enter, back1);
+
+        MenuButtonItem registrHere = new MenuButtonItem("текст для регистрации");
+        MenuButtonItem registrationButton = new MenuButtonItem("Зарегистрироваться");
+        MenuButtonItem back2 = new MenuButtonItem("Назад");
+        SubMainMenu menuRegistration = new SubMainMenu(registrHere, registrationButton, back2);
+
+        MenuBox menuBox = new MenuBox(mainMenu);
+        login.setOnMouseClicked(event -> menuBox.setSubMenu(menuLogin));
+        back1.setOnMouseClicked(event -> menuBox.setSubMenu(mainMenu));
+        back2.setOnMouseClicked(event -> menuBox.setSubMenu(mainMenu));
+        registration.setOnMouseClicked(event -> menuBox.setSubMenu(menuRegistration));
 
         exit.setOnMouseClicked(event -> System.exit(0));
         root.getChildren().addAll(menuBox);
-
 
         Scene scene = new Scene(root, 900, 600);
         menuBox.setVisible(true);
@@ -38,7 +51,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

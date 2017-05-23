@@ -1,4 +1,4 @@
-package sample.component;
+package sample.components;
 
 import javafx.animation.Animation;
 import javafx.animation.FillTransition;
@@ -11,10 +11,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
-public class MenuItem extends StackPane {
-    private String name;
+public class MenuButtonItem extends StackPane {
 
-    public MenuItem(String name){
+    public MenuButtonItem(String name){
         Rectangle bg = new Rectangle(200,50, Color.BLUE);
         bg.setOpacity(0.5);
 
