@@ -6,6 +6,7 @@ import javafx.scene.shape.Rectangle;
 
 public class MenuBox extends Pane {
     static SubMenu subMenu;
+    static SubMenuForChat subMenuForChat;
 
     public MenuBox(SubMenu subMenu){
         MenuBox.subMenu = subMenu;
@@ -18,6 +19,19 @@ public class MenuBox extends Pane {
 
     public void setSubMenu(SubMenu subMenu){
         getChildren().remove(MenuBox.subMenu);
+        MenuBox.subMenu = subMenu;
+        getChildren().add(subMenu);
+    }
+
+    public void setSubMenuForChat(SubMenuForChat subMenuForChat, SubMenu subMenu){
+        getChildren().remove(MenuBox.subMenu);
+        MenuBox.subMenuForChat = subMenuForChat;
+        MenuBox.subMenu = subMenu;
+        getChildren().addAll(subMenuForChat, subMenu);
+    }
+
+    public void setSubMenuDelChat(SubMenu subMenu){
+        getChildren().removeAll(MenuBox.subMenuForChat, MenuBox.subMenu);
         MenuBox.subMenu = subMenu;
         getChildren().add(subMenu);
     }

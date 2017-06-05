@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 import sample.components.MenuBox;
 import sample.components.MenuButtonItem;
 import sample.components.SubMenu;
+import sample.components.SubMenuForChat;
 
 public class Main extends Application {
 
@@ -43,8 +45,18 @@ public class Main extends Application {
         MenuButtonItem back2 = new MenuButtonItem("Назад");
         SubMenu menuRegistration = new SubMenu(registrationText, registrationButton, back2);
 
+        TextField userTextIn = new TextField();
+        MenuButtonItem back3 = new MenuButtonItem("Назад");
+        MenuButtonItem user = new MenuButtonItem("User1");
+        MenuButtonItem user2 = new MenuButtonItem("User2");
+        Label userTextOut = new Label();
+        SubMenu chatSubMenuText = new SubMenu(userTextIn, userTextOut);
+        SubMenuForChat menuChat = new SubMenuForChat(back3, user, user2);
+
         MenuBox menuBox = new MenuBox(mainMenu);
 
+        back3.setOnMouseClicked(event -> menuBox.setSubMenuDelChat(mainMenu));
+        enter.setOnMouseClicked(event -> menuBox.setSubMenuForChat(menuChat, chatSubMenuText));
         login.setOnMouseClicked(event -> menuBox.setSubMenu(menuLogin));
         back1.setOnMouseClicked(event -> menuBox.setSubMenu(mainMenu));
         back2.setOnMouseClicked(event -> menuBox.setSubMenu(mainMenu));
